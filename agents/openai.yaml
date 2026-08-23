@@ -1,0 +1,4 @@
+interface:
+  display_name: "DeepSeek Harness Plugin Creator"
+  short_description: "Build and validate production-grade Harness plugins"
+  default_prompt: "Use $deepseek-harness-plugin-creator to build and verify a DeepSeek Harness plugin for this requirement."
