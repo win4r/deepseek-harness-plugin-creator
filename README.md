@@ -1,5 +1,7 @@
 # DeepSeek Harness Plugin Creator
 
+English | [简体中文](README.zh-CN.md)
+
 A reusable Codex skill for designing, implementing, validating, and releasing external plugins and bundle layers for [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) and Cordis.
 
 It supports practical plugin shapes including:
