@@ -1,0 +1,58 @@
+{
+  "name": __PACKAGE_NAME_JSON__,
+  "version": "0.1.0",
+  "description": __DESCRIPTION_JSON__,
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "cordis.patch.yml",
+    "README.md",
+    "SECURITY.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": __NODE_ENGINE_JSON__
+  },
+  "packageManager": __NPM_VERSION_JSON__,
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "npm run build && node --test test/*.test.mjs",
+    "check": "npm run typecheck && npm test",
+    "prepare": "npm run build",
+    "prepack": "npm run check"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "keywords": [
+    "deepseek-harness",
+    "dsh",
+    "cordis",
+    "tool"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "@deepseek-ai/schemastery": __SCHEMASTERY_VERSION_JSON__
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": __CORDIS_PEER_JSON__,
+    "@deepseek-ai/dsh-tools": __DSH_TOOLS_PEER_JSON__
+  },
+  "devDependencies": {
+    "@deepseek-ai/cordis": __CORDIS_VERSION_JSON__,
+    "@deepseek-ai/dsh-tools": __DSH_TOOLS_VERSION_JSON__,
+    "@types/node": __NODE_TYPES_VERSION_JSON__,
+    "typescript": __TYPESCRIPT_VERSION_JSON__
+  }
+}

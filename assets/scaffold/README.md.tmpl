@@ -1,0 +1,52 @@
+# __PACKAGE_NAME_MD__
+
+__DESCRIPTION_MD__
+
+This package registers the `__TOOL_NAME_MD__` DeepSeek Harness tool. It is an intentionally low-authority starter: the tool performs only an in-memory string transformation and has no filesystem, subprocess, network, credential, persistence, or provider access.
+
+## Contract
+
+The generator sourced each imported runtime version from the selected Profile or an explicit audited override. It preserved the target DSH `engines.node` contract from an installed manifest, a matching pinned official checkout, or an explicit audited override; it never derives that contract from whichever Node happens to run the generator. The host singletons Cordis and DSH Tools use the same exact version in development and peer dependencies. Schemastery follows the audited official package ownership as an exact runtime dependency. Re-run contract discovery and regenerate or repin deliberately after a Harness upgrade.
+
+The exact peer defaults are deliberate: the fast path does not claim compatibility it has not tested. If you need to widen a Cordis or DSH Tools peer range, edit it manually only after recording compatibility evidence for every admitted host version and rerunning build, Loader, fresh-Profile startup, HTTP readiness, shutdown, and port-release gates.
+
+The package contributes `cordis.patch.yml`, whose stable row id is `__PLUGIN_ID_MD__`. A later patch that changes the row's `config` replaces that complete config object, so restate every key that must survive.
+
+## Develop
+
+```bash
+npm install
+# npm install generates package-lock.json. Review and commit it.
+npm run check
+```
+
+`Config` is a runtime Standard Schema. `normalizeConfig()` additionally rejects unknown keys because direct callers can bypass Loader validation. The tool checks `AbortSignal`, rejects unknown arguments, truncates and counts by Unicode code point so it cannot split an emoji surrogate pair, and reports truncation in both its structured result and model-facing text.
+
+## Validate and package
+
+```bash
+npm run check
+node <deepseek-harness-plugin-creator-skill>/scripts/validate_plugin.mjs . --built
+npm pack --dry-run
+```
+
+For a release, inspect the actual archive and install that exact tarball into a fresh temporary `DSH_HOME`; `--dump-config` alone is not startup acceptance.
+
+## Install for local development
+
+From the directory containing `__PACKAGE_DIR_MD__`:
+
+```bash
+dsh plugin --profile web add -w ./__PACKAGE_DIR_MD__
+dsh --profile web --dump-config
+```
+
+Installing mutates that Profile. Do it only with the Profile owner's authorization. Remove by package name:
+
+```bash
+dsh plugin --profile web remove __PACKAGE_NAME_MD__
+```
+
+## Extending the starter
+
+This fast path is appropriate only while the tool remains a pure deterministic transformation. Before adding writes, subprocesses, credentials, a provider, scheduling, persistence, or client code, return to the parent Skill's authority, sandbox, durable-runtime, and release guidance and add the corresponding negative tests.
