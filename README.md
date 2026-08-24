@@ -27,6 +27,28 @@ workflow with the scaffold, API quick-reference, and symptom-index ideas from
 scaffold and references were rewritten against the official Harness contract
 and the comparison audit; they are not copied as a fixed local snapshot.
 
+## Core advantages
+
+The main advantage is an executable, evidence-producing delivery path rather
+than a prompt-only template or version-agnostic checklist:
+
+| Advantage | Practical value |
+| --- | --- |
+| Contract-qualified development | Discovers the pinned official Harness source, target CLI/Profile, Node engine, package manager, and exact runtime versions before choosing APIs or generating files. Preview-era API drift fails closed instead of being hidden by remembered examples. |
+| Two appropriately sized paths | Uses a deterministic scaffold for a genuinely bounded Tool, while routing Services, Cron, Workers, providers, Web clients, and existing-plugin revisions through capability-specific design and tests. |
+| Harness-native architecture coverage | Handles real Loader export shapes, Bundle patches, Tools, Services, Agent/session integration, durable runtimes, isolated workers/provider adapters, and declared Web client bundles without forcing every plugin into one template. |
+| Executable delivery tooling | Ships a scaffold, static validator, trusted acceptance helper, reusable templates, focused references, tests, and CI—the workflow can be run and audited rather than merely followed by hand. |
+| Fail-closed package and supply-chain checks | Verifies exact dependency ownership and runtime pairing, lockfile/package surfaces, Loader and client exports, patch mounting, secrets and local paths, plus symlink, hardlink, tree-race, archive-replacement, and hostile pack-output cases. |
+| Artifact-to-runtime continuity | Freezes the packed archive and SHA-256, revalidates after package lifecycle hooks, installs that exact artifact into an isolated temporary `DSH_HOME`, validates the unpacked package, checks composition, and exercises Web startup, HTTP readiness, normal shutdown, and port release. |
+| Capability-aware safety and lifecycle guidance | Separates Tool visibility from authority and supplies dedicated rules for mutation, durable scheduling, cancellation, disposal, subprocess isolation, credentials, provider disclosure, and restart recovery. |
+| Honest completion and authorization boundaries | Distinguishes static hints, `--dump-config`, Loader acceptance, runtime smoke tests, and capability-specific proof. It does not call an unsandboxed execution, model/provider turn, publication, Profile mutation, or external release “verified” without the required evidence and authorization. |
+| Operational debugging and release evidence | Provides a symptom-oriented troubleshooting ladder and requires artifact identity, dependency audit, fresh-Profile evidence, cleanup limits, independent review for high-risk plugins, and an explicit list of what remains unverified. |
+
+These advantages are exercised by the repository's automated tests, including
+live isolated scaffold/install/build/pack/Web-boot acceptance. They do not
+remove the need for capability-specific functional tests or review of code run
+through `--trusted-execute`.
+
 ## Two work modes
 
 | Mode | Use it for | What it does not replace |
