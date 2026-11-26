@@ -1,5 +1,3 @@
-# [🚀观看我的哔哩哔哩视频](https://space.bilibili.com/3493277319825652)
-
 # DeepSeek Harness Plugin Creator
 
 English | [简体中文](README.zh-CN.md)
